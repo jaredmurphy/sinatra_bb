@@ -7,7 +7,6 @@ class ApplicationController < Sinatra::Base
   end
 
   not_found do
-    title "Not Found!"
     erb :not_found
   end
 end

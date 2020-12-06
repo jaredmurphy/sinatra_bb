@@ -14,6 +14,9 @@ gem "sinatra-activerecord"
 group :test do
   gem "capybara"
   gem "database_cleaner"
+  gem "factory_bot"
+  gem "faker"
   gem "rack-test"
   gem "rspec"
+  gem "shoulda-matchers"
 end

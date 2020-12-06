@@ -3,9 +3,13 @@
 ENV["RACK_ENV"] ||= "test"
 
 require File.expand_path("../config/environment", __dir__)
-require "rspec"
+
 require "capybara/dsl"
 require "database_cleaner"
+require "factory_bot"
+require "faker"
+require "rspec"
+require "shoulda-matchers"
 
 Capybara.app = BrassBull
 DatabaseCleaner.strategy = :truncation
@@ -30,4 +34,18 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  config.include FactoryBot::Syntax::Methods
+
+  config.before(:suite) do
+    FactoryBot.find_definitions
+  end
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :active_record
+    with.library :active_model
+  end
 end
