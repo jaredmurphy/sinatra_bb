@@ -1,10 +1,10 @@
 development:
  adapter: postgresql
- database: brassbull-development
+ database: brassbull_development
 test:
  adapter: postgresql
- database: brassbull-test
+ database: brassbull_test
 production:
  adapter: postgresql
- database: brassbull-production
+ database: brassbull_production
 

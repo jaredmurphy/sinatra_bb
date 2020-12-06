@@ -3,9 +3,7 @@
 require "spec_helper"
 
 RSpec.describe "Visiting post pages" do
-  before do
-    User.create(email: "test@test.com", name: "test user")
-  end
+  before { create(:user) }
 
   it "when going to the posts page" do
     visit "/posts"

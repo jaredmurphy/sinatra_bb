@@ -5,6 +5,7 @@ ENV["RACK_ENV"] ||= "test"
 require File.expand_path("../config/environment", __dir__)
 
 require "capybara/dsl"
+require "capybara/rspec"
 require "database_cleaner"
 require "factory_bot"
 require "faker"

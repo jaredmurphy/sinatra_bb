@@ -2,7 +2,12 @@
 
 class SiteController < ApplicationController
   get "/" do
-    @name = "Emrys"
+    @name = session[:username]
+    erb :welcome
+  end
+
+  get "/user/:username" do
+    session[:username] = params[:username]
     erb :welcome
   end
 end

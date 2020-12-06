@@ -10,10 +10,25 @@
 
   <link rel="stylesheet" href="stylesheets/style.css">
   <script type="text/javascript" src="javascripts/script.js"></script>
-
 </head>
 
 <body>
+  <% if @error_message %>
+    <p class="flash flash-error"><%= @error_message %></p>
+  <% end %>
+
+  <% if @current_user %>
+    <p> Current User: <%= @current_user.email %></p>
+
+    <form action="/sign_out" method="POST" class="inline">
+      <button type="submit" class="link-button">
+       Sign out
+      </button>
+    </form>
+  <% else %>
+    <p> <a href="/sign_in" >Sign in</a>
+  <% end %>
+
   <%= yield %>
 </body>
 </html>
