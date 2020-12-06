@@ -1,0 +1,11 @@
+<h3> Create new post </h3>
+
+<form action="/posts" method="POST">
+  <input name="title" type="text" placeholder="My New Post" required="true" />
+  <textarea name="body" required="true">
+  </textarea>
+
+  <input name="user_id" value=<%= @current_user.id %> type="hidden" />
+
+  <input type="submit" value="Submit" />
+</form>

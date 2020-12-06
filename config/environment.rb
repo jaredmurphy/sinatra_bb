@@ -15,6 +15,9 @@ Dir.glob(File.join(APP_ROOT, "app", "models", "*.rb")).each { |file| require fil
 # require the helper(s)
 Dir.glob(File.join(APP_ROOT, "app", "helpers", "*.rb")).each { |file| require file }
 
+# require the services(s)
+Dir.glob(File.join(APP_ROOT, "app", "services", "*.rb")).each { |file| require file }
+
 # require basic app
 require "./brassbull"
 

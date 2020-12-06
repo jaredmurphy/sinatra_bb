@@ -17,6 +17,10 @@
     <p class="flash flash-error"><%= @error_message %></p>
   <% end %>
 
+  <% if @success_message %>
+    <p class="flash flash-success"><%= @success_message %></p>
+  <% end %>
+
   <% if @current_user %>
     <p> Current User: <%= @current_user.email %></p>
 
