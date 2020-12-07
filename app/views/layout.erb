@@ -8,6 +8,7 @@
   <meta name="description" content="The Brass Bull">
   <meta name="author" content="The Eternal One">
 
+  <link rel="stylesheet" href="/stylesheets/normalize.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <script type="text/javascript" src="/javascripts/script.js"></script>
 </head>
@@ -21,33 +22,36 @@
     <p class="flash flash-success"><%= @success_message %></p>
   <% end %>
 
-  <header class="site-header">
-    <h1 class="site-title">
-      <a href="/" title="<%= I18n.t("site.title")%>" rel="home">
-        <%= I18n.t("site.title")%>
-      </a>
-    </h1>
+  <main class="main-container">
+    <header class="site-header">
+      <h1 class="site-title">
+        <a href="/" class="site-title-link" title="<%= I18n.t("site.title")%>" rel="home">
+          <%= I18n.t("site.title")%>
+        </a>
+      </h1>
 
-    <nav>
-      <ul>
-        <li><%= I18n.t("site.home") %></li>
-        <li><%= I18n.t("posts.list") %></li>
-      </ul>
-    </nav>
-  </header>
+      <nav id="site-navigation" class="site-navigation" role="navigation">
+        <ul class="navigation-menu">
+          <li class="navigation-item"><%= I18n.t("site.home") %></li>
+          <li class="navigation-item"><%= I18n.t("posts.list") %></li>
+        </ul>
+      </nav>
+    </header>
 
-  <% if @current_user %>
-    <p> Current User: <%= @current_user.email %></p>
 
-    <form action="/sign_out" method="POST" class="inline">
-      <button type="submit" class="link-button">
-       Sign out
-      </button>
-    </form>
-  <% else %>
-    <p> <a href="/sign_in" >Sign in</a>
-  <% end %>
+    <%= yield %>
 
-  <%= yield %>
+    <% if @current_user %>
+      <p> Current User: <%= @current_user.email %></p>
+
+      <form action="/sign_out" method="POST" class="inline">
+        <button type="submit" class="link-button">
+          Sign out
+        </button>
+      </form>
+    <% else %>
+      <p> <a href="/sign_in" >Sign in</a>
+    <% end %>
+  </main>
 </body>
 </html>

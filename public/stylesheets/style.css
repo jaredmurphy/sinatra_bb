@@ -1,3 +1,52 @@
-h1 {
-  color: blue;
+/*dark - #515151*/
+/*other dark - #636363*/
+/*link blue - #21759b*/
+
+.main-container {
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-top: 40px;
 }
+
+.site-title {
+  margin-top: 0;
+}
+
+.site-title-link {
+  color: #515151;
+  text-decoration: none;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.site-title-link:hover {
+  color: #21759b;
+  cursor: pointer;
+}
+
+.site-navigation {
+  border-top: 1px solid rgb(81, 81, 81, .1);
+  border-bottom: 1px solid rgb(81, 81, 81, .1);
+  margin: 20px 20px 0 0;
+}
+
+.navigation-menu {
+  display: flex;
+  padding: 0;
+}
+
+.navigation-item {
+  margin: 0 20px 0 0;
+  list-style: none;
+  color: #636363;
+  font-family: Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+.navigation-item:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
+
