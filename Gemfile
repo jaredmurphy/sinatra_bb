@@ -6,6 +6,7 @@ ruby "2.6.3"
 
 gem "activerecord"
 gem "bcrypt"
+gem "i18n"
 gem "pg"
 gem "pry"
 gem "rack"

@@ -1,6 +1,19 @@
 # frozen_string_literal: true
 
+# require "sinatra/support/i18nsupport"
+
 class ApplicationController < Sinatra::Base
+  configure do
+    set :root, APP_ROOT
+    set :views, File.join(root, "app/views", "")
+    set :public_folder, File.join(root, "public", "")
+    I18n.load_path = [File.join(root, "config/locales", "en.yml")]
+
+    set :method_override, true
+    enable :sessions
+    enable :logging
+  end
+
   helpers do
     def protected!
       return if authorized?
@@ -11,14 +24,6 @@ class ApplicationController < Sinatra::Base
     def authorized?
       current_user.present?
     end
-  end
-
-  configure do
-    set :views, "app/views"
-    set :public_dir, "public"
-    set :method_override, true
-    enable :sessions
-    enable :logging
   end
 
   before do

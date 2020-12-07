@@ -8,8 +8,8 @@
   <meta name="description" content="The Brass Bull">
   <meta name="author" content="The Eternal One">
 
-  <link rel="stylesheet" href="stylesheets/style.css">
-  <script type="text/javascript" src="javascripts/script.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script type="text/javascript" src="/javascripts/script.js"></script>
 </head>
 
 <body>
@@ -20,6 +20,21 @@
   <% if @success_message %>
     <p class="flash flash-success"><%= @success_message %></p>
   <% end %>
+
+  <header class="site-header">
+    <h1 class="site-title">
+      <a href="/" title="<%= I18n.t("site.title")%>" rel="home">
+        <%= I18n.t("site.title")%>
+      </a>
+    </h1>
+
+    <nav>
+      <ul>
+        <li><%= I18n.t("site.home") %></li>
+        <li><%= I18n.t("posts.list") %></li>
+      </ul>
+    </nav>
+  </header>
 
   <% if @current_user %>
     <p> Current User: <%= @current_user.email %></p>
