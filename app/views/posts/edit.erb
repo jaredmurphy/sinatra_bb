@@ -1,0 +1,10 @@
+<h3> Edit Post </h3>
+
+<form action="/posts/<%= @post.slug %>" method="POST">
+  <input name="post[title]" type="text" placeholder="My New Post" required="true" value="<%= @post.title %>" />
+  <textarea name="post[body]" required="true">
+    <%= @post.body %>
+  </textarea>
+
+  <input type="submit" value="Submit" />
+</form>

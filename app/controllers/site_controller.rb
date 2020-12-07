@@ -2,7 +2,8 @@
 
 class SiteController < ApplicationController
   get "/" do
-    @name = session[:username]
+    @name = @current_user&.name
+    @post = Post.last
     erb :welcome
   end
 

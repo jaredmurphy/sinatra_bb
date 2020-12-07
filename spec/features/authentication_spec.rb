@@ -10,8 +10,8 @@ RSpec.feature "Authentication" do
     click_link "Sign in"
     expect(page).to have_content("Sign in")
 
-    fill_in "email", with: user.email
-    fill_in "password", with: "invalid-password"
+    fill_in "user[email]", with: user.email
+    fill_in "user[password]", with: "invalid-password"
     click_button "Sign in"
 
     expect(page).to have_content("Your credentials are invalid")
@@ -22,8 +22,8 @@ RSpec.feature "Authentication" do
     click_link "Sign in"
     expect(page).to have_content("Sign in")
 
-    fill_in "email", with: user.email
-    fill_in "password", with: "password"
+    fill_in "user[email]", with: user.email
+    fill_in "user[password]", with: "password"
     click_button "Sign in"
 
     expect(page).to have_content("Current User: #{user.email}")
@@ -34,8 +34,8 @@ RSpec.feature "Authentication" do
     click_link "Sign in"
     expect(page).to have_content("Sign in")
 
-    fill_in "email", with: user.email
-    fill_in "password", with: "password"
+    fill_in "user[email]", with: user.email
+    fill_in "user[password]", with: "password"
     click_button "Sign in"
 
     expect(page).to have_content("Current User: #{user.email}")

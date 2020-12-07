@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  # index
   get "/posts" do
     @title = "Posts Index"
     @users_count = ::User.count
@@ -8,16 +9,42 @@ class PostsController < ApplicationController
     erb :'posts/index'
   end
 
+  # new
   get "/posts/new" do
     protected!
     erb :'posts/new'
   end
 
+  # edit
+  get "/posts/:slug/edit" do
+    protected!
+
+    @post = Post.find_by(slug: params[:slug])
+    erb :'posts/edit'
+  end
+
+  # show
   get "/posts/:slug" do
     @post = Post.find_by(slug: params[:slug])
     erb :'posts/show'
   end
 
+  # update
+  post "/posts/:slug" do
+    protected!
+
+    @post = Post.find_by(slug: params[:slug])
+
+    if @post.update(post_params)
+      @success_message = "Post updated"
+      redirect "/posts/#{@post.slug}"
+    else
+      @error_message = @post.errors
+      erb :'posts/edit'
+    end
+  end
+
+  # create
   post "/posts" do
     protected!
 
@@ -27,7 +54,7 @@ class PostsController < ApplicationController
       @success_message = "Post created"
       redirect "/posts/#{post.slug}"
     else
-      @error_message = posts.errors
+      @error_message = post.errors
       erb :'posts/new'
     end
   end
@@ -35,6 +62,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.slice(:title, :body, :user_id)
+    params.fetch(:post).slice(:title, :body, :user_id)
   end
 end
