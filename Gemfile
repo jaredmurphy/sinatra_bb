@@ -13,10 +13,14 @@ gem "rack"
 gem "sinatra"
 gem "sinatra-activerecord"
 
+group :development, :test do
+  gem "dotenv"
+  gem "factory_bot"
+end
+
 group :test do
   gem "capybara"
   gem "database_cleaner"
-  gem "factory_bot"
   gem "faker"
   gem "rack-test"
   gem "rspec"

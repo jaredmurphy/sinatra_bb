@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# require "sinatra/support/i18nsupport"
+require "securerandom"
 
 class ApplicationController < Sinatra::Base
   configure do
@@ -10,6 +10,7 @@ class ApplicationController < Sinatra::Base
     I18n.load_path = [File.join(root, "config/locales", "en.yml")]
 
     set :method_override, true
+    set :session_secret, ENV.fetch("SESSION_SECRET") { SecureRandom.hex(64) }
     enable :sessions
     enable :logging
   end

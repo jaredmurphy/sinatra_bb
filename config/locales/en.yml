@@ -4,6 +4,10 @@ en:
     home: Home
   posts:
     list: Archives
-
-
-
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: Name can't be blank

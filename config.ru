@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "dotenv/load"
 require "bundler"
 Bundler.require
 $LOAD_PATH.unshift(File.expand_path("app", __dir__))
