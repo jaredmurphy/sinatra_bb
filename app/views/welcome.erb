@@ -1,8 +1,1 @@
-<% if @post.present? %>
-  <h1 class="blog-title">
-    <a href="/posts/<%= @post.slug %>">
-      <%= @post.title %>
-    </a>
-  </h1>
-<% end %>
-
+<%= erb :"shared/post", locals: { post: @post } %>

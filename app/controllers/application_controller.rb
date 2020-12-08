@@ -31,6 +31,10 @@ class ApplicationController < Sinatra::Base
     current_user
   end
 
+  before "/*/" do
+    redirect request.path_info.chomp("/")
+  end
+
   not_found do
     erb :not_found
   end

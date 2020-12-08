@@ -2,10 +2,15 @@
 /*other dark - #636363*/
 /*link blue - #21759b*/
 
+body {
+  background-color: #F5F5F5;
+}
+
 .main-container {
   margin: 0 auto;
-  padding-left: 40px;
-  padding-top: 40px;
+  padding: 40px;
+  max-width: 100ex;
+  background-color: #FFFFFF;
 }
 
 .site-title {
@@ -16,6 +21,9 @@
   color: #515151;
   text-decoration: none;
   font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.3em;
+  line-height: 1.2em;
 }
 
 .site-title-link:hover {
@@ -37,16 +45,44 @@
 .navigation-item {
   margin: 0 20px 0 0;
   list-style: none;
-  color: #636363;
   font-family: Helvetica, Arial, sans-serif;
   text-transform: uppercase;
 }
 
 .navigation-item:hover {
   cursor: pointer;
-  font-weight: bold;
+  letter-spacing: 0
+  color: #636363;
+  text-shadow: .25px 0px .1px, -.25px 0px .1px;
 }
 
+.navigation-link {
+  text-decoration: none;
+  color: #636363;
+}
 
+article {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 29px;
+  max-width: 83.2ex;
+}
+
+.post-title a {
+  color: rgb(65, 110, 210);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5em;
+  line-height: 1.4em;
+}
+
+.post-body {
+  font-size: 18px;
+  line-height: 29px;
+}
+
+.post-body a {
+  color: rgb(65, 110, 210);
+}
 
 

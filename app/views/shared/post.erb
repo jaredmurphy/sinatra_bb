@@ -1,0 +1,14 @@
+<% if post.present? %>
+  <article class="post">
+    <h3 class="post-title">
+      <a href="/posts/<%= post.slug %>">
+        <%= post.title %>
+      </a>
+    </h3>
+
+    <section class="post-body">
+      <%= post.body %>
+    </div>
+  </article>
+<% end %>
+
