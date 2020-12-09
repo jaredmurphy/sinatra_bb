@@ -15,7 +15,7 @@ task :console do
 end
 
 task :server do
-  sh("rackup config.ru")
+  sh("rerun rackup config.ru")
 end
 
 task :spec do

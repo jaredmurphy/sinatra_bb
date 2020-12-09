@@ -1,5 +1,9 @@
-<h3> <%= @post.title %> </h3>
 
-<p> <%= @post.body %> </p>
+<% if @current_user %>
+  <div class="edit-post-link-container">
+    <a href="/posts/<%= @post.slug %>/edit" class="edit-post-link"> Edit this Post </a>
+  </div>
+<% end %>
 
+<%= erb :"shared/post", locals: { post: @post } %>
 

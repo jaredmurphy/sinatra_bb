@@ -13,6 +13,10 @@ gem "rack"
 gem "sinatra"
 gem "sinatra-activerecord"
 
+group :development do
+  gem "rerun"
+end
+
 group :development, :test do
   gem "dotenv"
   gem "factory_bot"
