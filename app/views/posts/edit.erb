@@ -5,9 +5,8 @@
     <input name="post[title]" type="text" placeholder="My New Post" required="true" value="<%= @post.title %>" />
   </div>
 
-  <p id='edit-post-body-button'>Edit</p>
-  <p id='preview-post-body-button'>Preview</p>
   <div id="editor"><%= @post.body%></div>
   <input id='hidden-post-body-input' name="post[body]" style='display:none;'/>
+
   <input type="submit" value="Submit" />
 </form>
