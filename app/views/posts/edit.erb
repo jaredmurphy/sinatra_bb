@@ -17,7 +17,12 @@
     <span onclick="createFootnote();">Footnote</span>
   </div>
 
-  <iframe id="richTextEditor" name="richTextField"><%= @post.body%></iframe>
+  <iframe
+    id="richTextEditor"
+    name="richTextField"
+    srcdoc="<%= @post.body %>">
+  </iframe>
+
   <input id='hidden-post-body-input' name="post[body]" style='display:none;'/>
 
   <input type="submit" value="Submit" />
@@ -62,7 +67,9 @@
       // add footnotes container
       let footnotes = content.document.createElement('div');
       footnotes.setAttribute('id', 'footnotes');
-      footnotes.innerHTML = "<p>---</p>"
+      let lines = content.document.createElement('p');
+      lines.textContent = "---";
+      footnotes.appendChild(lines);
       content.document.querySelector('body').appendChild(footnotes);
 
       addNewFootnote();
