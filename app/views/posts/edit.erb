@@ -15,6 +15,7 @@
     <span onclick="execCmd('justifyRight');">Right</span>
     <span onclick="createLink();">Link</span>
     <span onclick="createFootnote();">Footnote</span>
+    <span onclick="addImage();">Image</span>
   </div>
 
   <iframe
@@ -38,6 +39,11 @@
 
  function execCmd(command) {
    richTextField.document.execCommand(command, false, null);
+ }
+
+ function addImage(){
+   const url = prompt('Enter the image url');
+   richTextField.document.execCommand('insertImage', false, url);
  }
 
  function createLink() {
