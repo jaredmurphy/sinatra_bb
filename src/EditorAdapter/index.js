@@ -6,7 +6,6 @@ class EditorAdapter {
 
     postForm.addEventListener("submit", e => {
       const content = editor.contentWindow.document.body.innerHTML;
-      console.log('content', content);
       hiddenInput.value = content;
     });
   }

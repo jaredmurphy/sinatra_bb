@@ -20,7 +20,8 @@
   <iframe
     id="richTextEditor"
     name="richTextField"
-    srcdoc="<%= @post.body %>">
+    style="width: 826px; height: 330px;"
+    srcdoc="<%= escape_html(@post.body) %>">
   </iframe>
 
   <input id='hidden-post-body-input' name="post[body]" style='display:none;'/>
@@ -32,12 +33,10 @@
  richTextField.document.designMode = 'On';
 
  function enableEditMode(){
-   console.log('enableEditMode');
    richTextField.document.designMode = 'On';
  }
 
  function execCmd(command) {
-   console.log('execCmd', command);
    richTextField.document.execCommand(command, false, null);
  }
 
@@ -54,15 +53,11 @@
  }
 
   function createFootnote(){
-    console.log('createFootnote');
     let content = richTextField
-    console.log('content', content);
 
     if (content.document.getElementById('footnotes')) {
-      console.log('add to foot notes');
       addNewFootnote();
     } else {
-      console.log('creating footnotes');
 
       // add footnotes container
       let footnotes = content.document.createElement('div');
@@ -94,7 +89,6 @@
   }
 
  function execCmdWithArg(command, arg) {
-   console.log('execCmdWithArg', command);
    richTextField.document.execCommand(command, false, arg);
  }
 </script>
