@@ -63,6 +63,11 @@ body {
   color: #636363;
 }
 
+.navigation-button {
+  text-decoration: none;
+  color: #636363;
+}
+
 article {
   font-size: 18px;
   line-height: 29px;
@@ -110,4 +115,16 @@ article {
 #preview-post-body {
   width: 832px;
   display: none;
+}
+
+#editor-toolbar {
+  margin: 10px auto;
+}
+
+.editor-toolbar-button {
+  padding: 2px 5px;
+  border: 1px solid gray;
+  margin-right: 2px;
+  cursor: pointer;
+  background-color: lightgray;
 }

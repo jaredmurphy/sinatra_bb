@@ -6,10 +6,7 @@ RSpec.feature "Visiting post pages" do
   let!(:user) { create(:user, password: "password") }
 
   scenario "when going to the posts page" do
-    visit "/posts"
-
-    expect(page).to have_content("Posts")
-    expect(page).to have_content("Users: #{User.count}")
+    visit "/archives"
   end
 
   scenario "visiting the new posts page with invalid credentials" do
@@ -19,7 +16,7 @@ RSpec.feature "Visiting post pages" do
 
   scenario "visiting the new posts page with the correct credentials" do
     visit "/"
-    click_link "Sign in"
+    visit "/sign_in"
     expect(page).to have_content("Sign in")
 
     fill_in "user[email]", with: user.email
@@ -46,7 +43,7 @@ RSpec.feature "Visiting post pages" do
 
   scenario "visiting the new posts page with the correct credentials" do
     visit "/"
-    click_link "Sign in"
+    visit "/sign_in"
     expect(page).to have_content("Sign in")
 
     fill_in "user[email]", with: user.email

@@ -1,0 +1,98 @@
+<form action="<%= action %>" method="<%= method %>" id="post-form">
+  <div >
+    <input name="post[title]" type="text" placeholder="My New Post" required="true" value="<%= post.title %>" />
+  </div>
+
+  <div id="editor-toolbar">
+    <span class="editor-toolbar-button" onclick="execCmd('bold');">B</span>
+    <span class="editor-toolbar-button" onclick="execCmd('italic');">I</span>
+    <span class="editor-toolbar-button" onclick="execCmd('underline');">U</span>
+    <span class="editor-toolbar-button" onclick="execCmd('strikethrough');">S</span>
+    <span class="editor-toolbar-button" onclick="execCmd('justifyLeft');">Left</span>
+    <span class="editor-toolbar-button" onclick="execCmd('justifyCenter');">Center</span>
+    <span class="editor-toolbar-button" onclick="execCmd('justifyRight');">Right</span>
+    <span class="editor-toolbar-button" onclick="createLink();">Link</span>
+    <span class="editor-toolbar-button" onclick="createFootnote();">Footnote</span>
+    <%#<span class="editor-toolbar-button" onclick="addImage();">Image</span>%>
+  </div>
+
+  <iframe
+    id="richTextEditor"
+    name="richTextField"
+    style="width: 826px; height: 330px;"
+    srcdoc="<%= escape_html(post.body) %>">
+  </iframe>
+
+  <input name="post[user_id]" value=<%= @current_user.id %> type="hidden" />
+  <input id='hidden-post-body-input' name="post[body]" style='display:none;'/>
+
+  <input type="submit" value="Submit" />
+</form>
+
+<script >
+
+window.onload = function() {
+   richTextField.document.designMode = 'On';
+};
+
+ function execCmd(command) {
+   richTextField.document.execCommand(command, false, null);
+ }
+
+ function addImage(){
+   const url = prompt('Enter the image url');
+   richTextField.document.execCommand('insertImage', false, url);
+ }
+
+ function createLink() {
+  const url = prompt('Enter a Url', 'http://');
+  const title = prompt('Enter a title', '');
+  const selection = richTextField.document.getSelection();
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.title = title;
+  window.getSelection().getRangeAt(0).surroundContents(a);
+  richTextField.document.execCommand('insertHTML', false, '<a href="' + url + '" target="_blank">' + title + '</a>');
+ }
+
+  function createFootnote(){
+    let content = richTextField
+
+    if (content.document.getElementById('footnotes')) {
+      addNewFootnote();
+    } else {
+
+      // add footnotes container
+      let footnotes = content.document.createElement('div');
+      footnotes.setAttribute('id', 'footnotes');
+      let lines = content.document.createElement('p');
+      lines.textContent = "---";
+      footnotes.appendChild(lines);
+      content.document.querySelector('body').appendChild(footnotes);
+
+      addNewFootnote();
+    }
+  }
+
+  function addNewFootnote(){
+    const footnotes = richTextField.document.querySelectorAll('.footnote');
+    const thisCount = footnotes.length + 1;
+
+    // link
+    const id = `footnote-${thisCount}`;
+    const linkText = `[${thisCount}]`
+    richTextField.document.execCommand('insertHTML', false, `<a href='#${id}'>${linkText}</a>`);
+
+    // footnote
+    const footnote = richTextField.document.createElement('p');
+    footnote.setAttribute('id', id);
+    footnote.classList.add('footnote');
+    footnote.innerHTML = linkText + " " + prompt('Information for footnote');
+    richTextField.document.getElementById('footnotes').appendChild(footnote);
+  }
+
+ function execCmdWithArg(command, arg) {
+   richTextField.document.execCommand(command, false, arg);
+ }
+</script>

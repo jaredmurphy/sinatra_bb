@@ -3,7 +3,7 @@
 class SiteController < ApplicationController
   get "/" do
     @name = @current_user&.name
-    @post = Post.last
+    @post = Post.order(:created_at).last
     erb :welcome
   end
 

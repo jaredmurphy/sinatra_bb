@@ -18,6 +18,22 @@
           <%= I18n.t("posts.list") %>
         </a>
       </li>
+
+      <% if @current_user %>
+        <li class="navigation-item">
+          <a href="/posts/new" class="navigation-link">
+            <%= I18n.t("posts.create") %>
+          </a>
+        </li>
+
+        <li class="navigation-item">
+          <form id="signout-form" action="/sign_out" method="POST">
+            <a href="#" class="navigation-link" onclick="document.getElementById('signout-form').submit();">
+              Sign out
+            </a>
+          </form>
+        </li>
+      <% end %>
     </ul>
   </nav>
 </header>

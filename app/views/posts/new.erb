@@ -1,11 +1,3 @@
 <h3> Create new post </h3>
 
-<form action="/posts" method="POST">
-  <input name="post[title]" type="text" placeholder="My New Post" required="true" />
-  <textarea name="post[body]" required="true">
-  </textarea>
-
-  <input name="post[user_id]" value=<%= @current_user.id %> type="hidden" />
-
-  <input type="submit" value="Submit" />
-</form>
+<%= erb :"/posts/form", locals: { post: @post, action: "/posts", method: "POST" } %>

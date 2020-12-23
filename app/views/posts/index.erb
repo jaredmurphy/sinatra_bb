@@ -1,6 +1,9 @@
-<h1><%= @title %></h1
-<p> Users: <%= @users_count%> </p>
-<p> Posts: <%= @posts_count%> </p>
-
-
-
+<% @posts.each do |post| %>
+  <article class="post">
+    <h3 class="post-title">
+      <a href="/posts/<%= post.slug %>">
+        <%= post.title %>
+      </a>
+    </h3>
+  </article>
+<% end %>

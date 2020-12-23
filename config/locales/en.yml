@@ -4,6 +4,7 @@ en:
     home: Home
   posts:
     list: Archives
+    create: New Post
   activerecord:
     errors:
       models:

@@ -6,8 +6,7 @@ RSpec.feature "Authentication" do
   let!(:user) { create(:user, password: "password") }
 
   scenario "signing in with invalid credentials" do
-    visit "/"
-    click_link "Sign in"
+    visit "/sign_in"
     expect(page).to have_content("Sign in")
 
     fill_in "user[email]", with: user.email
@@ -19,7 +18,7 @@ RSpec.feature "Authentication" do
 
   scenario "signing in with the correct credentials" do
     visit "/"
-    click_link "Sign in"
+    visit "/sign_in"
     expect(page).to have_content("Sign in")
 
     fill_in "user[email]", with: user.email
@@ -31,7 +30,7 @@ RSpec.feature "Authentication" do
 
   scenario "signing out" do
     visit "/"
-    click_link "Sign in"
+    visit "/sign_in"
     expect(page).to have_content("Sign in")
 
     fill_in "user[email]", with: user.email

@@ -33,18 +33,6 @@
     <%= erb :"shared/header" %>
 
     <%= yield %>
-
-    <% if @current_user %>
-      <p> Current User: <%= @current_user.email %></p>
-
-      <form action="/sign_out" method="POST" class="inline">
-        <button type="submit" class="link-button">
-          Sign out
-        </button>
-      </form>
-    <% else %>
-      <p> <a href="/sign_in" >Sign in</a>
-    <% end %>
   </main>
   <script type="text/javascript" src="/javascripts/script.js"></script>
   <script type="text/javascript" src="/javascripts/bundle.js"></script>

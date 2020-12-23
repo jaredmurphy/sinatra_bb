@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:user][:password])
       session.clear
       session[:user_id] = user.id
-      redirect to "/posts"
+      redirect to "/"
     else
       @error_message = "Your credentials are invalid"
       erb :"sessions/new"

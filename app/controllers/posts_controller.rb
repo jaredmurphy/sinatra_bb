@@ -2,16 +2,16 @@
 
 class PostsController < ApplicationController
   # index
-  get "/posts" do
+  get "/archives" do
     @title = "Posts Index"
-    @users_count = ::User.count
-    @posts_count = ::Post.count
+    @posts = Post.order(created_at: :desc)
     erb :'posts/index'
   end
 
   # new
   get "/posts/new" do
     protected!
+    @post = Post.new
     erb :'posts/new'
   end
 
