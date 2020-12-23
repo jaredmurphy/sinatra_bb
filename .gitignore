@@ -1,4 +1,5 @@
 .env
 .env.test
 
+public/javascripts/bundle.js
 node_modules/*
