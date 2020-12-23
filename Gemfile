@@ -6,6 +6,7 @@ ruby "2.6.3"
 
 gem "activerecord"
 gem "bcrypt"
+gem "dotenv"
 gem "i18n"
 gem "pg"
 gem "pry"
@@ -18,7 +19,6 @@ group :development do
 end
 
 group :development, :test do
-  gem "dotenv"
   gem "factory_bot"
 end
 
@@ -28,5 +28,6 @@ group :test do
   gem "faker"
   gem "rack-test"
   gem "rspec"
+  gem "selenium-webdriver"
   gem "shoulda-matchers"
 end

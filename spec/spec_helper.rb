@@ -13,6 +13,8 @@ require "rspec"
 require "shoulda-matchers"
 
 Capybara.app = BrassBull
+Capybara.server = :webrick
+
 DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |config|

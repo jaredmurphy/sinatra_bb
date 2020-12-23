@@ -14,7 +14,7 @@ RSpec.feature "Visiting post pages" do
     expect(page).to have_content("Not authorized")
   end
 
-  scenario "visiting the new posts page with the correct credentials" do
+  scenario "visiting the new posts page with the correct credentials", :js do
     visit "/"
     visit "/sign_in"
     expect(page).to have_content("Sign in")
@@ -22,7 +22,7 @@ RSpec.feature "Visiting post pages" do
     fill_in "user[email]", with: user.email
     fill_in "user[password]", with: "password"
     click_button "Sign in"
-    expect(page).to have_content("Current User: #{user.email}")
+    expect(page).to have_content("Welcome, #{user.name}")
 
     visit "/posts/new"
     expect(page).to have_content("Create new post")
@@ -49,7 +49,7 @@ RSpec.feature "Visiting post pages" do
     fill_in "user[email]", with: user.email
     fill_in "user[password]", with: "password"
     click_button "Sign in"
-    expect(page).to have_content("Current User: #{user.email}")
+    expect(page).to have_content("Welcome, #{user.name}")
 
     visit "/posts/#{post.slug}/edit"
     expect(page).to have_content("Edit Post")

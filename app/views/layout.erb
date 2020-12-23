@@ -22,8 +22,11 @@
   <% end %>
 
   <main class="main-container">
-
     <%= erb :"shared/header" %>
+
+    <% if @current_user %>
+      <p>Welcome, <%= @current_user.name %></p>
+    <% end %>
 
     <%= yield %>
   </main>

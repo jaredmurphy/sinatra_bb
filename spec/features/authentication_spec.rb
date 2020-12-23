@@ -25,10 +25,10 @@ RSpec.feature "Authentication" do
     fill_in "user[password]", with: "password"
     click_button "Sign in"
 
-    expect(page).to have_content("Current User: #{user.email}")
+    expect(page).to have_content("Welcome, #{user.name}")
   end
 
-  scenario "signing out" do
+  scenario "signing out", :js do
     visit "/"
     visit "/sign_in"
     expect(page).to have_content("Sign in")
@@ -37,11 +37,11 @@ RSpec.feature "Authentication" do
     fill_in "user[password]", with: "password"
     click_button "Sign in"
 
-    expect(page).to have_content("Current User: #{user.email}")
+    expect(page).to have_content("Welcome, #{user.name}")
 
-    click_button "Sign out"
+    click_link "Sign out"
 
     expect(page).to have_content("Brass Bull")
-    expect(page).to have_content("Sign in")
+    expect(page).to_not have_content("Welcome, #{user.name}")
   end
 end
