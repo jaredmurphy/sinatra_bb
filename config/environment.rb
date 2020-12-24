@@ -7,7 +7,11 @@ Bundler.require
 APP_ROOT = File.expand_path("../", __dir__)
 
 # require the controller(s)
-Dir.glob(File.join(APP_ROOT, "app", "controllers", "*.rb")).each { |file| require file }
+controllers = File.join(APP_ROOT, "app", "controllers")
+require File.join(controllers, "application_controller")
+require File.join(controllers, "site_controller")
+require File.join(controllers, "sessions_controller")
+require File.join(controllers, "posts_controller")
 
 # require the model(s)
 Dir.glob(File.join(APP_ROOT, "app", "models", "*.rb")).each { |file| require file }
