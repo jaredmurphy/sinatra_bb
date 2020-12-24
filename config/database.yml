@@ -1,6 +1,6 @@
 development:
  adapter: postgresql
- database: brassbull_development
+ url: <%= ENV['DATABASE_URL'] %>
 test:
  adapter: postgresql
  database: brassbull_test
@@ -8,4 +8,4 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>

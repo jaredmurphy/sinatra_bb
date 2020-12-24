@@ -20,6 +20,3 @@ Dir.glob(File.join(APP_ROOT, "app", "services", "*.rb")).each { |file| require f
 
 # require basic app
 require "./brassbull"
-
-# require database configurations
-require File.join(APP_ROOT, "config", "database")
